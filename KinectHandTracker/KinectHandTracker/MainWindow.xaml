@@ -1,0 +1,40 @@
+﻿<Window x:Class="KinectHandTracker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KinectHandTracker"
+        mc:Ignorable="d"
+        Title="Hand Tracker" Closing="MainWindow_Closing" Height="518.667" Width="730" MinWidth="730" MinHeight="518.667">
+    <Grid Margin="0,0,0.333,-3.667">
+        <ComboBox Margin="93,5,0,0" VerticalAlignment="Top" Height="22" HorizontalAlignment="Left" Width="110" x:Name="CmbBoxPorts"/>
+        <Image Source="{Binding ColorImage}" Margin="21,57,0,0" HorizontalAlignment="Left" Width="398" Height="237" VerticalAlignment="Top"/>
+        <Label Content="Output Port:" HorizontalAlignment="Left" Height="30" Margin="4,3,0,0" VerticalAlignment="Top" Width="84"/>
+        <Button x:Name="BtnRefreshPorts" Content="Refresh" HorizontalAlignment="Left" Height="22" Margin="412,5,0,0" VerticalAlignment="Top" Width="45" Click="BtnRefreshPorts_Click"/>
+        <Button x:Name="BtnStartOutput" Content="Start" HorizontalAlignment="Left" Height="22" Margin="462,5,0,0" VerticalAlignment="Top" Width="45" Click="BtnStartOutput_Click"/>
+        <Button x:Name="BtnStopOutput" Content="Stop" HorizontalAlignment="Left" Height="22" Margin="512,5,0,0" VerticalAlignment="Top" Width="45" Click="BtnStopOutput_Click" IsEnabled="False"/>
+        <ComboBox Margin="283,5,0,0" VerticalAlignment="Top" Height="22" HorizontalAlignment="Left" Width="110" x:Name="CmbBoxBaudRate"/>
+        <Label Content="Baud Rate:" HorizontalAlignment="Left" Height="30" Margin="208,3,0,0" VerticalAlignment="Top" Width="70"/>
+        <Image Source="{Binding BodyImage}" Margin="424,57,0,0" Height="237" VerticalAlignment="Top" HorizontalAlignment="Left" Width="271"/>
+        <DataGrid x:Name="dataGrid" ItemsSource="{Binding }" AutoGenerateColumns="False" Margin="10,307,10,10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Width="23"  Binding="{Binding ID}"/>
+                <DataGridTextColumn Header="IsTracked" Width="60" Binding="{Binding IsTracked}"/>
+                <DataGridTextColumn Header="MinZ" Width="60" Binding="{Binding MinZ}"/>
+                <DataGridTextColumn Header="AvgZ" Width="60" Binding="{Binding AvgZ}"/>
+                <DataGridTextColumn Header="MaxZ" Width="60" Binding="{Binding MaxZ}"/>
+                <DataGridTextColumn Header="LeftState" Width="65" Binding="{Binding HandLeftState}"/>
+                <DataGridTextColumn Header="LeftX" Width="55" Binding="{Binding HandLeftX}"/>
+                <DataGridTextColumn Header="LeftY" Width="55" Binding="{Binding HandLeftY}"/>
+                <DataGridTextColumn Header="RightState" Width="65" Binding="{Binding HandRightState}"/>
+                <DataGridTextColumn Header="RightX" Width="55" Binding="{Binding HandRightX}"/>
+                <DataGridTextColumn Header="RightY" Width="55" Binding="{Binding HandRightY}"/>
+                <DataGridTextColumn Header="IsNearest" Width="60" Binding="{Binding IsNearest}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Color Camera" HorizontalAlignment="Left" Margin="21,31,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Semibold"/>
+        <Label Content="Tracked Body" HorizontalAlignment="Left" Margin="424,31,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Semibold"/>
+        <Ellipse Name="ledSerial" Fill="DarkGray" HorizontalAlignment="Left" Height="20" Margin="562,6,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" StrokeThickness="0.1"/>
+        <Ellipse Name="ledKinect" Fill="DarkGray" HorizontalAlignment="Left" Height="20" Margin="587,6,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" StrokeThickness="0.1"/>
+    </Grid>
+</Window>
